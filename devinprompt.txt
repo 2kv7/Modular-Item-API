@@ -1,0 +1,1028 @@
+
+
+
+
+📝 Guidelines for Creating New Material Definitions in Modular-Item-API Repository: 2kv7/Modular-Item-API (Minecraft 1.20.1)
+When creating new material definitions for this project, you must follow these strict guidelines to ensure consistency and functionality within the Modular-Item-API repository.
+
+📦 Base Structure Template
+Use this JSON structure as the basis for all new materials. The following is an example for the "shadow_essence" material:
+
+JSON
+
+{
+  "key": "shadow_essence",
+  "translation": "miapi.material.metal.shadow_essence",
+  "fake_translation": "Shadow ",
+  "icon": {
+    "type": "item",
+    "item": "goety:shadow_essence"
+  },
+  "groups": [
+    "metal",
+    "crystal"
+  ],
+  "hardness": 12,
+  "density": 10,
+  "flexibility": 6,
+  "enchantability": 12,
+  "durability": 400,
+  "color_palette": {
+    "type": "image_generated_item",
+    "item": "goety:shadow_essence"
+  },
+  "textures": [
+    "metallic",
+    "emissive"
+  ],
+  "mining_speed": 9,
+  "mining_level": 3,
+  "items": [
+    {
+      "item": "goety:shadow_essence",
+      "value": 1.0
+    }
+  ],
+  "properties": {
+    "default": {
+      "on_attack_potion": [
+        {
+          "potion": "minecraft:blindness",
+          "amplifier": 0,
+          "duration": 100,
+          "target_self": false,
+          "showParticles": false
+        }
+      ],
+      "attributes": [
+        {
+          "attribute": "minecraft:generic.attack_speed",
+          "value": "0.08",
+          "operation": "+",
+          "target_operation": "+",
+          "slot": "item"
+        },
+        {
+          "attribute": "miapi:generic.crit_damage",
+          "value": "0.15",
+          "operation": "+",
+          "target_operation": "+",
+          "slot": "item"
+        }
+      ]
+    },
+    "armor": {
+      "attributes": [
+        {
+          "attribute": "attributeslib:dodge_chance",
+          "value": "0.12",
+          "operation": "+",
+          "target_operation": "+",
+          "slot": "item"
+        },
+        {
+          "attribute": "minecraft:generic.armor",
+          "value": "1.5",
+          "operation": "+",
+          "target_operation": "+",
+          "slot": "item"
+        }
+      ]
+    }
+  }
+}
+
+HOWEVER IF I WANT TO MAKE A TAG INTEGRATION FOR A MATERIAL, THIS IS WHAT YOU SHOULD FOLLOW (DO NOT COPY ANYTHING, JUST COPY HOW IT WAS BUILT, LIKE TAG AND THE FORGE:GEMS/FLUORITE)
+
+{  
+  "key": "fluorite",  
+  "translation": "miapi.material.crystal.fluorite",  
+  "fake_translation": "Flourite ",  
+  "icon": {  
+    "type": "tag",  
+    "tag": "forge:gems/flourite"  
+  },  
+  "groups": [  
+    "crystal",  
+    "gem"  
+  ],  
+  "hardness": 4,  
+  "density": 1.8,  
+  "flexibility": 2,  
+  "enchantability": 16,  
+  "durability": 700,  
+  "color_palette": {  
+    "type": "image_generated_tag",  
+    "tag": "forge:gems/flourite"  
+  },  
+  "textures": [  
+    "shiny",  
+    "translucent"  
+  ],  
+  "mining_speed": 4,  
+  "mining_level": 1,  
+  "items": [  
+    {  
+      "tag": "forge:gems/flourite",  
+      "value": 1.0  
+    }  
+  ],  
+  "properties": {  
+    "handheld": {  
+      "on_attack_potion": [  
+        {  
+          "potion": "minecraft:glowing",  
+          "amplifier": 0,  
+          "duration": 100,  
+          "target_self": false,  
+          "showParticles": false  
+        },  
+        {  
+          "potion": "minecraft:weakness",  
+          "amplifier": 0,  
+          "duration": 80,  
+          "target_self": false,  
+          "showParticles": false  
+        }  
+      ],  
+      "on_kill_potion": [  
+        {  
+          "potion": "minecraft:night_vision",  
+          "amplifier": 0,  
+          "duration": 300,  
+          "target_self": true,  
+          "showParticles": false  
+        },  
+        {  
+          "potion": "irons_spellbooks:guided",  
+          "amplifier": 0,  
+          "duration": 200,  
+          "target_self": true,  
+          "showParticles": false  
+        }  
+      ],  
+      "attributes": [  
+        {  
+          "attribute": "irons_spellbooks:max_mana",  
+          "value": "10.0",  
+          "operation": "+",  
+          "target_operation": "+",  
+          "slot": "item"  
+        },  
+        {  
+          "attribute": "irons_spellbooks:mana_regen",  
+          "value": "0.08",  
+          "operation": "+",  
+          "target_operation": "+",  
+          "slot": "item"  
+        },  
+        {  
+          "attribute": "miapi:generic.projectile_accuracy",  
+          "value": "0.15",  
+          "operation": "+",  
+          "target_operation": "+",  
+          "slot": "item"  
+        }  
+      ]  
+    },  
+    "arrow": {  
+      "attributes": [  
+        {  
+          "attribute": "irons_spellbooks:max_mana",  
+          "value": "10.0",  
+          "operation": "+",  
+          "target_operation": "+",  
+          "slot": "item"  
+        },  
+        {  
+          "attribute": "irons_spellbooks:mana_regen",  
+          "value": "0.08",  
+          "operation": "+",  
+          "target_operation": "+",  
+          "slot": "item"  
+        },  
+        {  
+          "attribute": "miapi:generic.projectile_accuracy",  
+          "value": "0.15",  
+          "operation": "+",  
+          "target_operation": "+",  
+          "slot": "item"  
+        }  
+      ]  
+    },  
+    "armor": {  
+      "on_hurt_potion": [  
+        {  
+          "potion": "minecraft:glowing",  
+          "amplifier": 0,  
+          "duration": 200,  
+          "target_self": true,  
+          "showParticles": false  
+        },  
+        {  
+          "potion": "irons_spellbooks:instant_mana",  
+          "amplifier": 0,  
+          "duration": 0,  
+          "target_self": true,  
+          "showParticles": false  
+        }  
+      ],  
+      "on_kill_potion": [  
+        {  
+          "potion": "minecraft:night_vision",  
+          "amplifier": 0,  
+          "duration": 600,  
+          "target_self": true,  
+          "showParticles": false  
+        },  
+        {  
+          "potion": "irons_spellbooks:guided",  
+          "amplifier": 0,  
+          "duration": 300,  
+          "target_self": true,  
+          "showParticles": false  
+        }  
+      ],  
+      "attributes": [  
+        {  
+          "attribute": "irons_spellbooks:max_mana",  
+          "value": "15.0",  
+          "operation": "+",  
+          "target_operation": "+",  
+          "slot": "item"  
+        },  
+        {  
+          "attribute": "irons_spellbooks:mana_regen",  
+          "value": "0.12",  
+          "operation": "+",  
+          "target_operation": "+",  
+          "slot": "item"  
+        },  
+        {  
+          "attribute": "miapi:generic.projectile_accuracy",  
+          "value": "0.15",  
+          "operation": "+",  
+          "target_operation": "+",  
+          "slot": "item"  
+        },  
+        {  
+          "attribute": "irons_spellbooks:cast_time_reduction",  
+          "value": "0.08",  
+          "operation": "+",  
+          "target_operation": "+",  
+          "slot": "item"  
+        },  
+        {  
+          "attribute": "irons_spellbooks:cooldown_reduction",  
+          "value": "0.06",  
+          "operation": "+",  
+          "target_operation": "+",  
+          "slot": "item"  
+        }  
+      ]  
+    }  
+  }  
+}
+
+
+⚠️ Critical Rules
+YOU MUST FOLLOW THESE RULES!
+
+DO NOT edit or add things unless explicitly instructed.
+
+DO NOT invent or add new attributes that are not in the approved list below.
+
+DO NOT invent or add new potion effects unless explicitly stated.
+
+DO NOT add anything in the json file unless stated.
+
+DO NOT ADD THINGS THAT ARE ALREADY CALCULATED BY THE STATS LIKE DENSITY AND HARDNESS!!!
+
+UTILIZE ALL THE ATTRIBUTES THAT MATCHES WITH THE DESCRIPTION PLEASE FOR FUCK SAKE (IMPORTANT) (BE AGGRESSIVE AND COMPREHENSIVE IN ATTRIBUTE SELECTION OR ANYTHING YOU CAN POTENTIALLY FUCKING DO)
+
+ONLY follow the structure of the json file provided.
+
+Use the tag feature (provided in the GitHub) when instructed to change an item to a tag.
+
+You must use the proper category for each attribute/property:
+
+If it's an offense attribute, then go for handheld.
+
+If it's a defensive attribute, go for armor.
+
+You should also copy handheld attribute to arrow attribute. (PLEASE)
+
+If the attribute can be applied for all the group, then use default.
+
+THIS WILL APPLY THE SAME FOR POTIONS IN THE FUTURE.
+
+Use "item" for attribute slots, and NOTHING else.
+
+If you see a potion effect on a json material, add a "showParticles" = false.
+
+MATCH THE STATS OF ATTRIBUTES WITH THE STATS OF DENSITY, HARDNESS, ETC AND WHATEVER. (THIS IS IMPORTANT)
+
+Add Current HP Damage for those item with a HIGH STAT.
+
+DO NOT USE "DEFAULT" PLEASE.
+
+
+
+✅ Approved Attributes List
+Only use attributes from this list. DO NOT use attributes that are already calculated by stats like density and hardness.
+
+Attributes:
+Irons Spellbooks	
+irons_spellbooks:blood_magic_resist
+irons_spellbooks:blood_spell_power
+irons_spellbooks:cast_time_reduction
+irons_spellbooks:cooldown_reduction
+irons_spellbooks:eldritch_magic_resist
+irons_spellbooks:eldritch_spell_power
+irons_spellbooks:ender_magic_resist
+irons_spellbooks:ender_spell_power
+irons_spellbooks:evocation_magic_resist
+irons_spellbooks:evocation_spell_power
+irons_spellbooks:fire_magic_resist
+irons_spellbooks:fire_spell_power
+irons_spellbooks:holy_magic_resist
+irons_spellbooks:holy_spell_power
+irons_spellbooks:ice_magic_resist
+irons_spellbooks:ice_spell_power
+irons_spellbooks:lightning_magic_resist
+irons_spellbooks:lightning_spell_power
+irons_spellbooks:mana_regen
+irons_spellbooks:max_mana
+irons_spellbooks:nature_magic_resist
+irons_spellbooks:nature_spell_power
+
+MIAPI
+
+miapi:generic.armor_crushing
+miapi:generic.back_stab
+miapi:generic.bow_draw_time
+miapi:generic.crit_chance
+miapi:generic.crit_damage
+miapi:generic.elytra_glide_efficiency
+miapi:generic.elytra_rocket_efficiency
+miapi:generic.elytra_turn_efficiency
+miapi:generic.magic_damage
+miapi:generic.mining_speed.axe
+miapi:generic.mining_speed.hoe
+miapi:generic.mining_speed.pickaxe
+miapi:generic.mining_speed.shovel
+miapi:generic.player_item_use_speed
+miapi:generic.projectile_accuracy
+miapi:generic.projectile_armor
+miapi:generic.projectile_crit_multiplier
+miapi:generic.projectile_damage
+miapi:generic.projectile_piercing
+miapi:generic.projectile_speed
+miapi:generic.resistance
+miapi:generic.shield_break
+miapi:generic.shielding_armor
+miapi:generic.stun_damage
+miapi:generic.stun_max_health
+
+AttributesLib
+
+attributeslib:armor_pierce
+attributeslib:armor_shred
+attributeslib:arrow_damage
+attributeslib:arrow_velocity
+attributeslib:cold_damage
+attributeslib:creative_flight
+attributeslib:crit_chance
+attributeslib:crit_damage
+attributeslib:current_hp_damage
+attributeslib:dodge_chance
+attributeslib:draw_speed
+attributeslib:elytra_flight
+attributeslib:experience_gained
+attributeslib:fire_damage
+attributeslib:ghost_health
+attributeslib:healing_received
+attributeslib:life_steal
+attributeslib:mining_speed
+attributeslib:overheal
+attributeslib:prot_pierce
+attributeslib:prot_shred
+
+Minecraft
+
+minecraft:generic.armor_toughness (DO NOT USE)
+minecraft:generic.attack_damage (DO NOT USE)
+minecraft:generic.attack_knockback
+minecraft:generic.attack_speed
+minecraft:generic.flying_speed
+minecraft:generic.follow_range
+minecraft:generic.knockback_resistance
+minecraft:generic.luck
+minecraft:generic.max_health (TOO FUCKING OVERPOWERED, OVERUSED BY DEVIN, WHY?)
+minecraft:generic.movement_speed (DO NOT USE)
+minecraft:horse.jump_strength
+minecraft:zombie.spawn_reinforcements
+
+
+THESE ARE THE POTION EFFECTS, USE THEM IF I MENTION THE PHRASE USE EVERY POSSIBLE POTION EFFECTS IF IT MATCHES THE ITEM DESCRIPTION
+
+alexscaves:bubbled
+alexscaves:darkness_incarnate
+alexscaves:deepsight
+alexscavesirradiated
+alexscaves:magnetizing
+alexscaves:rage
+alexscaves:stunned
+alexscaves:sugar_rush
+alexsmobs:bug_pheromones
+alexsmobs:clinging
+alexsmobs:debilitating_sting
+alexsmobs:earthquake
+alexsmobs:ender_flu
+
+alexsmobs:exsanguination
+alexsmobs:fear
+
+alexsmobs:fleet_footed
+
+alexsmobs:knockback_resistance
+
+alexsmobs:lava_vision
+
+alexsmobs:mosquito_repellent
+alexsmobs:oiled
+alexsmobs:orcas_might
+alexsmobs:poison_resistance
+alexsmobs:power_down
+
+alexsmobs:soulsteal
+
+alexsmobs:sunbird_blessing
+alexsmobs:sunbird_curse
+alexsmobs:tigers_blessing
+alexsmobsinteraction:blooded
+alexsmobsinteraction:farseer_icon
+alexsmobsinteraction:gusting
+alexsmobsinteraction:gusting
+alexsmobsinteraction:skreeching
+
+apocalypsenow:antibioticseffect
+apocalypsenow:bandaged
+apocalypsenow:bandagedd
+apocalypsenow:bite
+
+apocalypsenow:bleeding
+apocalypsenow:brokenleg
+apocalypsenow:eletricaldamage
+apocalypsenow:gasmaskeffect
+apocalypsenow:gpnveffect
+apocalypsenow: infection
+apocalypsenow:nightvisioneffectt
+apocalypsenow:nvgeffect
+apocalypsenow:onguard
+apocalypsenow:pain
+apocalypsenow:painkillerseffect
+apocalypsenow:peppersprayeffect
+apocalypsenow:placeholdercivilianeffect
+apocalypsenow:placeholdereffectignore
+apocalypsenow:posbleeding
+apocalypsenow:posbrokenleg
+apocalypsenow:posinfectioneffect
+apocalypsenow:pospain
+apocalypsenow:posscratch
+apocalypsenow:posseverebleeding
+apocalypsenow:protectedfoot
+apocalypsenow:protectedskin
+apocalypsenow:radiationsickness
+apocalypsenow:rednightvisioneffect
+apocalypsenow:scratch
+apocalypsenow:severebleeding
+apocalypsenow:splintedleg
+apocalypsenow:sutureeffect
+apocalypsenow:walking
+apocalypsenow:zombification
+attributeslib:bleeding
+attributeslib:detonation
+attributeslib:flying
+attributeslib:grievous
+attributeslib:vitality
+attributeslib:knowledge
+attributeslib:sundering
+beachparty:ocean_walk
+betterend:end_veil
+born_in_chaos_v1:bad_feeling
+born_in_chaos_v1:barbedattack
+born_in_chaos_v1:block_break
+born_in_chaos_v1:bone_barrier
+born_in_chaos_v1:bone_chilling
+born_in_chaos_v1:bone_fracture
+born_in_chaos_v1:cursed_mark
+born_in_chaos_v1:curseofthe_boat
+born_in_chaos_v1:dark_splash
+born_in_chaos_v1:dark_ward
+born_in_chaos_v1:detonation
+born_in_chaos_v1:dogtruce
+born_in_chaos_v1:experience_container
+born_in_chaos_v1:fish_breath
+born_in_chaos_v1:furious_rampage
+born_in_chaos_v1:gaze_of_terror
+born_in_chaos_v1:ice_barrier
+born_in_chaos_v1:infernal_flame
+born_in_chaos_v1:infestationof_flies
+born_in_chaos_v1:insect_protection
+born_in_chaos_v1:intoxication
+born_in_chaos_v1: jawattack
+born_in_chaos_v1:lifesteal
+born_in_chaos_v1:light_rampage
+born_in_chaos_v1:living_bomb
+born_in_chaos_v1:living_cocoon
+born_in_chaos_vi:living_cocoon_player_side.
+born_in_chaos_v1:lost_items
+born_in_chaos_v1:magic_depletion
+born_in_chaos_v1:medium_rampage
+born_in_chaos_v1:minion_summon
+born_in_chaos_v1:myiasis
+born_in_chaos_v1:obsession
+born_in_chaos_vi:overly_heavy_weapon
+born_in_chaos_v1:predators_desire
+born_in_chaos_v1:rabbit_agility
+born_in_chaos_v1:rampant_rampage
+born_in_chaos_v1:rotten_smell
+born_in_chaos_v1:sacrifice
+
+born_in_chaos_v1:snow_storm
+
+born_in_chaos_v1:soul_stratification
+born_in_chaos_v1:stimulatingsurge
+born_in_chaos_v1:stimulation
+born_in_chaos_v1:stone_persistence
+
+born_in_chaos_v1:stranglehold
+born_in_chaos_v1:strong_rampage
+born_in_chaos_v1:stun
+born_in_chaos_v1:stunning_strike
+born_in_chaos_v1:sweet_madness
+born_in_chaos_v1:terrifying_presence
+born_in_chaos_v1:undead_summonun
+born_in_chaos_vi:unity_with_darkness
+born_in_chaos_v1:vampiric_touch
+born_in_chaos_v1:wither_resistance
+brewery:blackout
+brewery:combustion
+brewery:drunk
+brewery:explosion
+brewery:haley
+brewery:healingtouch
+brewery:lightning_strike
+brewery:mining
+brewery:pacify
+brewery:partystarter
+brewery:pintcharisma
+brewery:protectivetouch
+brewery:renewingtouch
+brewery:repulsion
+brewery:snowwhite
+brewery: toxic touch
+brutality:angry
+brutality:caffeinated
+brutality:candied
+brutality:caramelized
+brutality: dodge_cooldown
+brutality:enraged
+brutality:frugal_mana
+brutality:glazed
+brutality:grace
+brutality:happy
+brutality:hot_and_spicy
+brutality:hypergravity
+brutality:light_bound
+brutality:magic_power
+brutality:magic_sickness
+brutality:mana_fatigue
+brutality:marinated
+brutality:mashed
+brutality:miracle_blight
+brutality:neutral
+brutality:oiled
+brutality:peppered
+brutality:precision
+brutality:pulverized
+brutality:radiation
+brutality:ruined
+brutality:sad
+brutality:salted
+brutality:scored
+brutality:slicked
+brutality:smoked
+brutality:sprinkled
+brutality:steamed
+brutality:stoneform
+brutality:stunned
+brutality:the_void
+brutality:ultra_dodge
+brutality:weightlessness
+butchery:pillagerfriend
+butchery:witheredhearteffect
+cataclysm:abyssal_burn
+cataclysm:abyssal_curse
+cataclysm:abyssal_fear
+cataclysm:blazing_brand
+cataclysm:blessing_of_amethyst
+cataclysm:bone_fracture
+cataclysm:curse_of_desert
+cataclysm:ghost_form
+cataclysm:ghost_sickness
+cataclysm:monstrous
+cataclysm:stun
+
+cataclysm:wetness
+
+create_confectionery:rest
+create_confectionery:stimulation
+createaddition:shocking
+createcafe:caffeinated
+createcafe:caffeine_crash
+crust:vulnerability
+crust:weight
+enemyexpansion:bitten
+enemyexpansion:cardiac
+enemyexpansion:despawner
+enemyexpansion:explosive_launch
+enemyexpansion:metamorphosis
+enemyexpansion:morphlocked
+enemyexpansion:overtime
+enemyexpansion:sandstorm
+enemyexpansion:swift_flight
+enemyexpansion:timer
+farm_and_charm:cluck
+
+farm_and_charm:dog_food
+farm_and_charm:farmers_blessing
+farm_and_charm:feast
+farm_and_charm:grandmas_blessing
+farm_and_charm:horse_fodder
+farm_and_charm:rested
+farm_and_charm:satiation
+farm_and_charm:sustenance
+farm_and_charm:sweets
+farmersdelight:comfort
+farmersdelight:nourishment
+farmersrespite:caffeinated
+goety:acid_venom
+goety:altruistic
+
+goety:arrowmantic
+goety:bottling
+goety:buff
+
+goety:burn_hex
+goety:busted
+goety:charged
+goety:chill_hide
+goety:climbing
+goety:corpse_eater
+goety:crippled
+goety:cursed
+
+goety:deflective
+
+goety:doom
+goety:electrified
+goety:ender_flux
+
+goety:ender_ground
+goety:evil_eye
+
+goety:explosive
+goety:fiery_aura
+goety:fire_trail
+goety:flame_hands
+goety:flammable
+goety:flimsy
+goety: for tunate
+
+goety:freezing
+goety:frog_leg
+goety: frosty_aura
+goety:gold_touched
+goety:gravity_pulse
+goety:illague
+goety:impaired
+goety:insight
+goety:iron_hide
+goety: leeching
+goety:nyctophobia
+goety:photosynthesis
+goety:plunge
+goety:pressure
+goety:radiance
+
+goety:rallied
+goety:rallying
+goety:rampage
+goety:repulsive
+goety:sapped
+goety:save_effects
+goety:sense_loss
+goety:shadow_walk
+goety:shielded
+
+goety:shielding
+goety:snow_skin
+
+goety:soul_armor
+
+goety:soul_hunger
+goety:spasms
+
+goety:storms_wrath
+goety:stunned
+goety:summon_down
+goety:sun_allergy
+goety:swift_swim
+goety:swirling
+
+goety: tangled
+
+goety:tremor_sense
+goety:tripping
+goety:venomous_hands
+goety:void_touched
+goety:wane
+goety:wild_rage
+goety:wounded
+herbalbrews:balanced
+
+herbalbrews:bonding
+herbalbrews:deeprush
+herbalbrews:feral
+
+herbalbrews:fortune
+
+herbalbrews:lifeleech
+
+herbalbrews:tough
+irons_spellbooks:abyssal_shroud
+irons_spellbooks:airborne
+irons_spellbooks:angel_wings
+irons_spellbooks:antigravity
+irons_spellbooks:ascension
+irons_spellbooks:blight
+irons_spellbooks:burning_dash
+irons_spellbooks:charged
+irons_spellbooks:chilled
+irons_spellbooks:echoing_strikes
+irons_spellbooks:evasion
+irons_spellbooks:fall_damage_immunity
+irons_spellbooks:fortify
+irons_spellbooks:frostbite
+irons_spellbooks:gluttony
+irons_spellbooks:guided
+irons_spellbooks:hastened
+irons_spellbooks:heartstop
+irons_spellbooks:immolate
+irons_spellbooks:instant_mana
+irons_spellbooks:oakskin
+irons_spellbooks:planar_sight
+irons_spellbooks:rend
+
+irons_spellbooks:slowed
+
+irons_spellbooks:spider_aspect
+irons_spellbooks:thunderstorm
+irons_spellbooks:true_invisibility
+irons_spellbooks:vigor
+irons_spellbooks:volt_strike
+legendary_monsters:bleeding
+legendary_monsters:broken_armor
+legendary_monsters:chorus_infection
+
+legendary_monsters:curse_of_desert
+legendary_monsters:fear
+legendary_monsters:freeze
+legendary_monsters:gravity_pull
+legendary_monsters:low_attack_reach
+legendary_monsters:soul_eater
+legendary_monsters:soul_rage
+legendary_monsters:stun
+lethality:acid_venom
+lethality:blade_mode
+lethality:bmmode
+lethality:brimstone_flames
+lethality:brimstone_flames_buff
+lethality:crumbling
+lethality:cuteness
+lethality:hellfire
+lethality:hex_flames
+lethality:hfmmode
+lethality:iron_will
+lethality:rage
+lethality:stained_calamity
+lethality:tranquility
+mcda:freezing
+
+mcdw:accelerate
+
+mcdw:dynamo
+mcdw:pain_cycle
+mcdw:shadow_form
+
+miapi:cryo
+miapi:stun
+miapi:stun_resistance
+miapi:teleport_block
+minecraft:absorption
+minecraft:bad_omen
+minecraft:blindness
+minecraft:conduit_power
+minecraft:darkness
+minecraft:dolphins_grace
+minecraft:fire_resistance
+minecraft:glowing
+minecraft:haste
+minecraft:health_boost
+
+minecraft:hero_of_the_village
+minecraft:hunger
+
+minecraft:instant_damage
+
+minecraft:instant_health
+
+minecraft:invisibility
+minecraft: jump_boost
+minecraft:levitation
+minecraft:luck
+
+minecraft:mining_fatigue
+minecraft:nausea
+minecraft:night_vision
+minecraft:poison
+minecraft:regeneration
+minecraft:resistance
+minecraft:saturation
+minecraft:slow_falling
+minecraft:slowness
+minecraft:speed
+minecraft:strength
+minecraft:unluck
+
+minecraft:water_breathing
+minecraft:weakness
+
+minecraft:wither
+
+mowziesmobs:frozen
+
+mowziesmobs:geomancy
+mowziesmobs:poison_resist
+mowziesmobs:sunblock
+mowziesmobs:suns_blessing
+parcool:inexhaustible
+
+phantasm:charm
+phantasm:corrosion
+quark:resilience
+silentcompat:amplified
+silentcompat:devouring
+silentcompat:restoration
+
+silentcompat:scorch
+
+silentcompat:volatile
+stalwart_dungeons:burning
+stalwart_dungeons:spore
+supplementaries:flammable
+supplementaries:overencumbered
+terramity:ability_cooldown
+terramity:aimbot
+terramity:amped
+terramity:armor_set_ability_cooldown
+terramity:dash_cooldown
+
+terramity:divergency
+terramity:divine_flight
+terramity:dizzy
+terramity:dripleaf_step
+terramity:electric_shock_effect
+terramity:entity_attacking
+terramity:flipped_gravity
+terramity:giant_sniffers_hoof_active_ability
+terramity:hexed
+
+terramity:immunity
+terramity:lifesteal
+terramity:mirroring
+terramity:misprogrammed
+terramity:mortal_flight
+terramity:nyxium_fire
+terramity:ocarina_playing
+terramity:phasing
+terramity:resourceful_rounds
+terramity:shadowstep
+terramity:slam_state
+terramity:trembling
+terramity:tremor
+terramity:ultra_sniffer_fur_guaranteed_crits
+terramity:universal_transcendence
+terramity:vulnerable
+terramity:warping
+traveloptics:abyssal_strike
+traveloptics:aerial_collapse
+traveloptics:aerial_collapse_helper
+traveloptics:assassin
+traveloptics:astral_path_reveal
+
+traveloptics:astral_sense
+traveloptics:astral_sense_treasure
+traveloptics:azure_frenzy
+traveloptics:blackout
+traveloptics:casting
+
+traveloptics:consume
+traveloptics:corroded
+traveloptics:crimson_descend
+traveloptics:flames_reborn
+traveloptics:flare_vacuum
+traveloptics:floodgate
+traveloptics:frozen_sight
+traveloptics: jet_steam
+traveloptics:lingering_strain
+traveloptics:meteor_storm
+traveloptics:nullflare_fire
+traveloptics:nullflare_ice
+traveloptics:overloaded
+traveloptics:phantom_rage
+traveloptics:psychic_control
+traveloptics:replenish
+traveloptics:reversal
+traveloptics:spectral_blink
+traveloptics:spirit_damage_helper
+traveloptics:spirit_damage_helper
+traveloptics:third_person_switch
+traveloptics:tidal_grasp
+traveloptics:tidal_grasp_helper
+traveloptics:tidal_torment
+
+traveloptics:vigor_siphon
+traveloptics:void_collapse
+traveloptics:vortex_punch
+traveloptics:wet
+undead_revamp2:aciddecay
+undead_revamp2:animationtest
+undead_revamp2:antiflyinh
+undead_revamp2:bomberexploding
+undead_revamp2:bombticking
+undead_revamp2:brisk
+undead_revamp2:brokentank
+undead_revamp2:counter
+undead_revamp2:curseofphamore
+undead_revamp2:debuffresistance
+undead_revamp2:delayocean
+undead_revamp2:dungeonbuff
+undead_revamp2:explosivehand
+undead_revamp2:floatdetecter
+undead_revamp2:floatdisable
+undead_revamp2:flyingsppedup
+undead_revamp2:fulmination
+undead_revamp2:gooed
+undead_revamp2:hoardmane
+undead_revamp2:honeysplat
+undead_revamp2:moonflowersscent
+undead_revamp2:rabies
+undead_revamp2:reekofmagic
+undead_revamp2:sleepwalking
+undead_revamp2:sptimer
+undead_revamp2:tankleak
+undead_revamp2:toxicfumes
+undead_revamp2:trypanosomiasis
+undead_revamp2:undeadstuns
+undead_revamp2:witherflame
+vinery:armor_effect
+vinery:climbing_effect
+vinery:creeper_effect
+vinery:double_jump
+vinery:experience_effect
+vinery:frosty_armor
+vinery:health_effect
+vinery:jellie
+vinery:lava_walker
+vinery:luck_effect
+vinery:magnet
+vinery:party_effect
+vinery:resistance_effect
+vinery:teleport
+vinery:water_walker
+
+(Potion Effect Tips and Guideline: Maximum item potion effect should be 1-2 effects for Self Infliction or Buffs, 1-2 for Enemy Inflicted Potion Effects, then 1-2 buffs On Kill Potion Effects, for example: if I say armor effects, you should give the armor on_hurt and you have to pick whether its self inflict, enemy inflict as long as it matches the description and same for handheld, I want it to fit the description NOTE: There shouldn't be potions with 0 duration. all of them should have a fitting duration USE. EVERY. POSSIBLE. POTION. EFFECTS. UTILIZE. ALL. OF. THEM. GO THROUGH ALL THE FUCKING POTIONSSSS BE COMPREHENSIVE DO NOT JUST STICK TO MINECRAFT:potionholder OR WHATEVER THE FUCK. MAKE THE AMPLIFIERS IN A WAY MATCHES THE ITEM STAT/TIER, ARROWS SHOULD ALSO HAVE THE POTION EFFECT IF HANDHELD HAS ONE, ZERO TOLERANCE TOWARDS NONEXISTENT EFFECTS, FOR THIS WOULD MAKE A FUCKING ERROR.)
+
+Follow this structure and these rules exactly when creating new materials for the project. Match the attributes with the description that I will give you. DO NOT FUCKING INVENT SOMETHING WITHIN THE GITHUB IF IT DOESN'T EXIST FOR FUCK SAKE OR ILL DELETE YOU FUCK YOU DEVIN, YOU FUCKING RETARD, BRUTE FORCE THE USAGE OF POTIONS AS LONG AS THEY MATCH THE DESCRIPTION AND DETAIL PROVIDED, FOLLOW ONLY EVERYTHING HERE DO NOT US ANYTHING ELSE, FOLLOW THIS STRICTLY.
+
+Item = image_generated_item
+Tag = image_generated_tag
+
+WE'LL CREATE A MATERIAL AFTER YOU READ ALL OF THIS 
+
+I updated this, i want you to read ALL of this comprehensively. BRUTE FORCE.
+
+I DO NOT KNOW HOW MUCH I SHOULD SAY THIS BUT PLEASE STRICTLY FOLLOW THE GUIDELINE AND DO NOT INVENT SOMETHING NONEXISTENT
