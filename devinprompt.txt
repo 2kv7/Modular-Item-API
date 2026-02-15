@@ -1,5 +1,5 @@
 
-
+This prompt must be followed by an AI Assistant/Guide for an easy material generation.
 
 
 📝 Guidelines for Creating New Material Definitions in Modular-Item-API Repository: 2kv7/Modular-Item-API (Minecraft 1.20.1)
@@ -1024,5 +1024,6 @@ Tag = image_generated_tag
 WE'LL CREATE A MATERIAL AFTER YOU READ ALL OF THIS 
 
 I updated this, i want you to read ALL of this comprehensively. BRUTE FORCE.
+
 
 I DO NOT KNOW HOW MUCH I SHOULD SAY THIS BUT PLEASE STRICTLY FOLLOW THE GUIDELINE AND DO NOT INVENT SOMETHING NONEXISTENT
